@@ -1,0 +1,117 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #3B94CB;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:40px
+}
+
+h1 {
+  font-size: 40pt;
+  font-weight: 700;
+}
+
+.content {
+  width: clamp(800px, 50vw, 60vw);
+  display: grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap: 30px;
+  padding: 40px
+  
+}
+
+.card {
+  background-color: #A8F5DB;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+  border: 2px black solid;
+}
+
+.card:hover{
+  scale: 1.05;
+}
+
+h2 {
+  padding-top: 20px;
+  padding-bottom: 5px;
+}
+
+.author {
+  padding-bottom: 30px;
+  font-style: italic;
+}
+
+p {
+  text-align: left;
+  padding: 0 20px 0 20px;
+}
+
+.pages {
+  align-self: flex-end;
+  margin-top: auto;
+  padding: 20px;
+}
+
+.notRead {
+  background-color: #E5AC9C;
+}
+
+ul {
+  position: absolute;
+  padding: 100px;
+  left: 0;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-size: 20pt;
+  
+}
+
+.dotRead, .dotNotRead {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.dotRead {
+  background-color: #A8F5DB;
+}
+
+.dotNotRead {
+  background-color: #E5AC9C;
+}
+
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border-style: none;
+}
+
+button img {
+  width: 100px;
+  height: auto;
+  transition-duration: 0.2s;
+  background-color: none;
+  filter: invert(89%) sepia(27%) saturate(390%) hue-rotate(97deg) brightness(98%) contrast(95%);
+}
+
+button:hover {
+  color: #3B94CB;
+}
