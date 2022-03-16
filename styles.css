@@ -9,14 +9,14 @@ body {
   font-family: 'Roboto Mono', monospace;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding:40px
+  height: min(100vh);
 }
 
 h1 {
   font-size: 40pt;
   font-weight: 700;
+  padding: 100px;
 }
 
 .content {
@@ -29,22 +29,32 @@ h1 {
 }
 
 .card {
+  position: relative;
   background-color: #A8F5DB;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.2s;
-  border: 2px black solid;
+  border-left: 8px #9CD7E5 solid;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-out;
 }
 
-.card:hover{
-  scale: 1.05;
+.remove {
+  position: absolute;
+  right: 0.25vw;
+  top: 0.25vw;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.remove img {
+  height: 30px;
+  width: auto;
 }
 
 h2 {
-  padding-top: 20px;
-  padding-bottom: 5px;
+  padding: 20px 20px 5px 20px;
 }
 
 .author {
@@ -67,16 +77,17 @@ p {
   background-color: #E5AC9C;
 }
 
-ul {
-  position: absolute;
-  padding: 100px;
+.key{
+  position: fixed;
+  padding-left: 100px;
   left: 0;
+  top: 45vh;
   display: flex;
   gap: 20px;
   flex-direction: column;
 }
 
-li {
+.key li {
   display: flex;
   align-items: center;
   gap: 30px;
@@ -98,20 +109,132 @@ li {
   background-color: #E5AC9C;
 }
 
-button {
+.newBook {
+  padding-right: 10vw;
+  position: fixed;
+  right: 0;
+  top: 40vh;
+}
+
+.addBook {
   cursor: pointer;
   background-color: transparent;
   border-style: none;
+  transition-duration: 0.2s;
+  font-family: 'Roboto Mono', monospace;
+
 }
 
-button img {
-  width: 100px;
+.addBook img {
+  width: 250px;
   height: auto;
   transition-duration: 0.2s;
   background-color: none;
-  filter: invert(89%) sepia(27%) saturate(390%) hue-rotate(97deg) brightness(98%) contrast(95%);
+  filter: invert(84%) sepia(36%) saturate(348%) hue-rotate(154deg) brightness(93%) contrast(93%);
 }
 
-button:hover {
-  color: #3B94CB;
+.modalContainer {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+form {
+  transition-duration: 0.5s;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: #9CD7E5;
+}
+
+form ul{
+  background-color: #9CD7E5;
+  display: grid;
+  grid-template-rows: 1fr 1fr auto;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  column-gap: 20px;
+  row-gap: 10px;
+  min-width: 600px;
+  padding-bottom: 20px;
+}
+form li:last-child {
+  grid-column: 1 / 3;
+  justify-self: center;
+  width: 100%;
+}
+
+label:not([for = "read"]) {
+  position: absolute;
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+input {
+  padding: 20px;
+  flex: 1;
+  text-align: center;
+}
+
+input, textarea {
+  border-radius: 10px;
+  border-style: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 30pt;
+}
+
+input:focus:not(#read), textarea:focus {
+  outline: 2px #3B94CB solid;
+}
+
+input:valid:not(#read) + label, textarea:valid + label{
+  visibility: hidden;
+}
+
+input:focus:not(#read) + label , textarea:focus + label{
+  visibility: hidden;
+}
+
+form li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#read {
+  flex: 0;
+}
+
+[for = "read"] {
+  padding-left: 10px;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  padding:15px
+}
+
+.submit {
+  border: none;
+  padding: 20px 60px;
+  font-family: 'Roboto Mono', monospace;
+  background-color: #A8F5DB;
+  font-size: 30pt;
+  border-radius: 10px;
+  cursor: pointer;
 }

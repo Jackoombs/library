@@ -10,7 +10,7 @@
   <title>Library</title>
 </head>
 <body>
-  <ul>
+  <ul class="key">
     <li>
       <span class="dotRead"></span>
       <p>READ</p>
@@ -23,9 +23,38 @@
   <h1>My Library</h1>
   <section class="content">
   </section>
-  <button class="addBook">
-    <img src="add.svg" alt="addsign">
-  </button>
-  
+  <aside class="newBook">
+    <button class="addBook">
+      <img src="add.svg" alt="addsign">
+    </button>
+  </aside>
+  <div class="modalContainer hide">
+    <form>
+      <ul>
+        <li>
+          <input required minlength="1" type="text" id="title" name="title">
+          <label for="title">Title</label>
+        </li>
+        <li>
+          <input required minlength="1" type="text" id="author" name="author">
+          <label for="author">Author</label>
+        </li>
+        <li>
+          <input required minlength="1" type="number" id="pages" name="pages">
+          <label for="pages">Number of pages</label>
+        </li>
+        <li>
+          <input minlength="1" type="checkbox" id="read" name="read" value="true">
+          <label for="read">Read?</label>
+        </li>
+        <li>
+          <textarea required  minlength="1" maxlength="50" name="excerpt" id="excerpt" rows="3"></textarea>
+          <label for="excerpt">Excerpt</label>
+        </li>
+      </ul>
+      <button class="submit" type="submit">ADD BOOK</button>
+    </form>
+  </div>
+
 </body>
 </html>
