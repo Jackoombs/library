@@ -20,22 +20,41 @@ function createCard(book) {
   const cardTitle = document.createElement('h2');
   const cardAuthor = document.createElement('h3');
   cardAuthor.classList.add('author')
+  const cardExcerpt = document.createElement('p');
+
+  const footer = document.createElement('div')
+  footer.classList.add('cardFooter')
+  const input = document.createElement('div')
+  input.classList.add('checkDiv')
+  const cardCheckbox = document.createElement('input')
+  cardCheckbox.setAttribute('type', 'checkbox')
+  cardCheckbox.addEventListener('change', () => {
+    card.classList.toggle('notRead')
+  })
+  const checkLabel = document.createElement('p')
+  checkLabel.textContent ='READ?'
+
   const cardPages = document.createElement('h3');
   cardPages.classList.add('pages')
-  const cardExcerpt = document.createElement('p');
+
   const container = document.querySelector('.content')
 
-  card.appendChild(cardRemove)
+  input.appendChild(cardCheckbox)
+  input.appendChild(checkLabel)
+  footer.appendChild(input)
+  footer.appendChild(cardRemove)
+  footer.appendChild(cardPages)
   card.appendChild(cardTitle)
   card.appendChild(cardAuthor)
   card.appendChild(cardExcerpt)
-  card.appendChild(cardPages)
+  card.appendChild(footer)
   container.appendChild(card)
   
   cardTitle.textContent = book.title;
   cardAuthor.textContent = `By ${book.author}`
   cardPages.textContent = `${book.pages} pages`
-  !book.read ? card.classList.add('notRead') : card.classList.remove('.notRead')
+  book.read ? cardCheckbox.checked = true : card.classList.toggle('notRead')
+ 
   cardExcerpt.textContent = `'${book.excerpt}'`
 }
 
@@ -47,7 +66,7 @@ function initBooks() {
 
 function removeListener(button) {
   button.addEventListener('click', () => {
-    removeindex = button.parentElement.getAttribute('data-index-number')
+    let removeindex = button.parentElement.parentElement.getAttribute('data-index-number')
     myLibrary.splice(removeindex, 1)
 
     cards = document.querySelectorAll('.card')
